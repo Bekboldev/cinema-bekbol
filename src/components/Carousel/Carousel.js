@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { img_300, noPicture } from "../../config/config";
 import "./Carousel.css";
+import AliceCarousel from "react-alice-carousel/lib/react-alice-carousel";
 
 const handleDragStart = (e) => e.preventDefault();
 
 const Gallery = ({ id, media_type }) => {
   const [credits, setCredits] = useState([]);
+
+  const APIKEI = 'febe98f2897239944e3dc43895168098';
 
   const items = credits.map((c) => (
     <div className="carouselItem">
@@ -36,7 +38,7 @@ const Gallery = ({ id, media_type }) => {
 
   const fetchCredits = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${APIKEI}&language=en-US`
     );
     setCredits(data.cast);
   };

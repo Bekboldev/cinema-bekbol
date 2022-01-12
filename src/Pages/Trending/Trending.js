@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 
-const Trending = () => {
+const   Trending = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
+    const APIKEI = 'febe98f2897239944e3dc43895168098';
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${APIKEI}&page=${page}`
     );
 
     setContent(data.results);

@@ -2,19 +2,14 @@ import { Chip } from "@material-ui/core";
 import axios from "axios";
 import { useEffect } from "react";
 
-const Genres = ({
-  selectedGenres,
-  setSelectedGenres,
-  genres,
-  setGenres,
-  type,
-  setPage,
-}) => {
+const Genres = ({selectedGenres, setSelectedGenres, genres, setGenres, type, setPage,}) => {
   const handleAdd = (genre) => {
     setSelectedGenres([...selectedGenres, genre]);
     setGenres(genres.filter((g) => g.id !== genre.id));
     setPage(1);
   };
+
+  const APIKEI = 'febe98f2897239944e3dc43895168098';
 
   const handleRemove = (genre) => {
     setSelectedGenres(
@@ -26,7 +21,7 @@ const Genres = ({
 
   const fetchGenres = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/genre/${type}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/genre/${type}/list?api_key=${APIKEI}&language=en-US`
     );
     setGenres(data.genres);
   };
@@ -35,7 +30,7 @@ const Genres = ({
     fetchGenres();
 
     return () => {
-      setGenres({}); // unmounting
+      setGenres({});
     };
     // eslint-disable-next-line
   }, []);

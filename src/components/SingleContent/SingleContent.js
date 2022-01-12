@@ -3,14 +3,7 @@ import { img_300, unavailable } from "../../config/config";
 import "./SingleContent.css";
 import ContentModal from "../ContentModal/ContentModal";
 
-const SingleContent = ({
-  id,
-  poster,
-  title,
-  date,
-  media_type,
-  vote_average,
-}) => {
+const SingleContent = ({id, poster, title, date, media_type, vote_average,}) => {
   return (
     <ContentModal media_type={media_type} id={id}>
       <Badge

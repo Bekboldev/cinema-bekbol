@@ -1,11 +1,4 @@
-import {
-  Button,
-  createMuiTheme,
-  Tab,
-  Tabs,
-  TextField,
-  ThemeProvider,
-} from "@material-ui/core";
+import {Button, createMuiTheme, Tab, Tabs, TextField, ThemeProvider,} from "@material-ui/core";
 import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
@@ -19,6 +12,7 @@ const Search = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
+  const APIKEI = 'febe98f2897239944e3dc43895168098';
 
   const darkTheme = createMuiTheme({
     palette: {
@@ -33,7 +27,7 @@ const Search = () => {
     try {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${
-          process.env.REACT_APP_API_KEY
+         APIKEI
         }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
       );
       setContent(data.results);
